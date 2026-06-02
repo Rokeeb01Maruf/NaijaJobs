@@ -1,0 +1,180 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: regular;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left, .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+}
+
+.left {
+    overflow-y: hidden;
+}
+
+.left img{
+    max-width: 100%;
+}
+
+.right{
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-block: 50px 100px;
+}
+
+.section-name{
+    font-size: .9rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    height: fit-content;
+    display: flex;
+    font-size: .9rem;
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.focus:focus{
+    border: 1.5px solid var(--Nigerian-gold);
+}
+
+form input[type="text"], form input[type="email"], form input[type="password"]{
+    border: 1.5px solid var(--forest-green);
+    outline: none;
+}
+
+.name{
+    width: 100%;
+    display: flex;
+    column-gap: 20px;
+}
+
+form label{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form input{
+    width: 100%;
+    padding: .4rem .5rem;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+form .button{
+    background-color: var(--forest-green);
+    border: 0;
+    padding-block: 10px;
+    width: 100%;
+    color: white;
+    font: 1rem regular;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+form .button:hover{
+    background-color: var(--Nigerian-gold);
+    scale: .9;
+}
+
+.terms{
+    margin-top: 10px;
+    display: flex;
+    column-gap: 10px;
+}
+
+.terms input{
+    max-width: 16px;
+}
+
+.terms a{
+    text-decoration: none;
+    color: var(--muted);
+}
+
+.pemail, .ppassword, .ifirst, .ilast, .isecond, .ipemail, .iuser, .ipass1, .ipass2, .iread{
+    font: .7rem regular;
+    color: red;
+    display: none;
+}
+
+.display{
+    display: flex;
+}
+
+.parent-eye{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 10px;
+}
+
+.open{
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.none{
+    display: none;
+}
+
+.image, .eye-check{
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}

@@ -1,0 +1,24 @@
+{% extends "accounts/base/base.html" %}
+{% block title %} NaijaJobs | Signin {% endblock %}
+{% load static %}
+{% block content %}
+    <form action="" method="post" id="Login">
+        {% csrf_token %}
+        <h2 class="section-name">Signin</h2>
+        <label for="email">
+            <p>Email</p>
+            <input type="email" name="email" class="focus inmail" id="email">
+            <p class="pemail">*Please input a valid email</p>
+        </label>
+        <label for="password">
+            <p>Password</p>
+            <input type="password" id="password" class="focus inpassword" name="password">
+            <p class="ppassword">Please input your password</p>
+        </label>
+        <button type="submit" class="button">Sign in</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </form
+{% endblock %}
+{% block script %} <script src="{% static 'js/signin.js' %}"></script> {% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} NaijaJobs {% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main class="main">
+        <section class="left">
+            <img src="{% static 'images/bg.png' %}" alt="">
+        </section>
+        <section class="right">
+            <div class="logo">
+                <img src="{% static 'svg/logo.svg' %}" alt="logo" width="100">
+            </div>
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+    {% block script %} {% endblock %}
+</body>
+</html>

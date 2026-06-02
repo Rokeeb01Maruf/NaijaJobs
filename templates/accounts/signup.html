@@ -1,0 +1,61 @@
+{% extends "accounts/base/base.html"%}
+{% block title %} Register {% endblock %}
+{% load static %}
+{% block content %}
+    <form action="" method="post" id="Logup">
+        {% csrf_token %}
+        <h2 class="section-name">Sign Up</h2>
+        <div class="name">
+            <label for="first_name">
+                <p>First name</p>
+                <input type="text" id="first_name" class="focus ifn" name="first_name">
+                <p class="ifirst">Please input a valid name</p>
+            </label>
+            <label for="last_name">
+                <p>Last name</p>
+                <input type="text" name="last_name" class="focus iln" id="last_name">
+                <p class="ilast">Please input a valid name</p>
+            </label>
+        </div>
+        <label for="username">
+            <p>Username</p>
+            <input type="text" name="username" class="focus iuse" id="username">
+            <p class="iuser">Please input a valid username</p>
+        </label>
+        <label for="email">
+            <p>Email</p>
+            <input type="email" name="email" class="focus iemail" id="email">
+            <p class="ipemail">Please enter a valid email</p>
+        </label>
+        <div class="parent-eye">
+            <div class="image use">
+                <img src="{% static 'svg/eye.svg' %}" alt="" class="open on">
+                <img src="{% static 'svg/eyeoff.svg' %}" alt="" class="open off none">
+            </div>
+            <label for="password" >
+                <p>Create Password</p>
+                <input type="password" id="password" class="focus ipass" name="password" minlength="8">
+                <p class="ipass1">Please input at least 8 character length password</p>
+            </label>
+        </div>
+        <div class="parent-eye">
+            <div class="eye-check">
+                <img src="{% static 'svg/eye.svg' %}" alt="" class="open one">
+                <img src="{% static 'svg/eyeoff.svg' %}" alt="" class="open zero none">
+            </div>
+            <label for="cpassword" class="parent-eye">
+                <p>Confirm Password</p>
+                <input type="password" id="cpassword" class="focus ipassed see-input" name="cpassword">
+                <p class="ipass2">Password mismatch</p>
+            </label>
+        </div>
+        <label for="terms" class="terms">
+            <input type="checkbox" name="terms" class="term" id="terms">
+            <a href="">Terms and condition</a>
+            <p class="iread">Please accept ours terms before you proceed</p>
+        </label>
+        <button type="submit" class="button">Sign Up</button>
+    </form>
+{% endblock %}
+
+{% block script %} <script src="{% static 'js/signup.js' %}"></script> {% endblock %}
