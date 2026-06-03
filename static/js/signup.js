@@ -7,6 +7,7 @@ const ipass = document.querySelector(".ipass")
 const ipassed = document.querySelector(".ipassed")
 const terms = document.querySelector(".term")
 signup.addEventListener("submit", (e)=>{
+    const role = signup.querySelector('input[name="role"]:checked')
     if(!first.value){
         e.preventDefault()
         const error = document.querySelector(".ifirst")
@@ -19,7 +20,7 @@ signup.addEventListener("submit", (e)=>{
         e.preventDefault()
         const error = document.querySelector(".iuser")
         error.classList.add("display")
-    }else if(!iemail.value.includes("@") || !iemail.value.includes(".com")){
+    }else if(!iemail.value.includes("@") || !iemail.value.includes(".")){
         e.preventDefault()
         const error = document.querySelector(".ipemail")
         error.classList.add("display")
@@ -34,6 +35,10 @@ signup.addEventListener("submit", (e)=>{
     }else if(!terms.checked){
         e.preventDefault()
         const error = document.querySelector(".iread")
+        error.classList.add("display")
+    }else if(!role){
+        e.preventDefault()
+        const error = document.querySelector(".prole")
         error.classList.add("display")
     }
 })
@@ -95,4 +100,12 @@ blind.addEventListener("click", ()=>{
     seeInput.setAttribute("type", "password")
     see.classList.remove("none")
     blind.classList.add("none")
+})
+
+const allRole = document.querySelectorAll("input[name='role']")
+allRole.forEach((e)=>{
+    e.addEventListener("click", ()=>{
+        const error = document.querySelector(".prole")
+        error.classList.remove("display")
+    })
 })
