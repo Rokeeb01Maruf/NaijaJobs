@@ -49,6 +49,23 @@
                 <p class="ipass2">Password mismatch</p>
             </label>
         </div>
+        <label class="role-container">
+            <div class="radio">
+                <label for="job-seekers">
+                    <div class="seeker">
+                        <input type="radio" id="job-seekers" value="Job Seeker" name="role">
+                        <p>Job Seeker</p>
+                    </div>
+                </label>
+                <label for="employer">
+                    <div class="employer">
+                        <input type="radio" id="employer" value="Employer" name="role">
+                        <p>Employer</p>
+                    </div>
+                </label>
+            </div>
+            <p class="prole">Please select your role</p>
+        </label>
         <label for="terms" class="terms">
             <input type="checkbox" name="terms" class="term" id="terms">
             <a href="">Terms and condition</a>
@@ -56,6 +73,9 @@
         </label>
         <button type="submit" class="button">Sign Up</button>
     </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
 {% endblock %}
 
 {% block script %} <script src="{% static 'js/signup.js' %}"></script> {% endblock %}
