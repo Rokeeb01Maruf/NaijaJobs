@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from .models import User
 
 def signup(request):
@@ -14,7 +14,7 @@ def signup(request):
         cpassword = request.POST.get("cpassword")
         terms = request.POST.get("terms")
         role = request.POST.get("role")
-        print(terms)
+        const = [first_name, last_name, username, email, password, cpassword, terms, role]
         if not first_name:
             error = "First name is required"
             return render(request, "accounts/signup.html", {"error": error})
@@ -46,6 +46,7 @@ def signup(request):
                 )
                 user.set_password(password)
                 user.save()
+                print(const)
                 login(request, user)
                 return redirect("signin")
             except Exception as e:
@@ -56,12 +57,18 @@ def signin(request):
     if request.method == "GET":
         return render(request, 'accounts/signin.html')
     elif request.method == "POST":
-        email = request.POST.get("email")
+        username = request.POST.get("email")
         password = request.POST.get("password")
-        if not "@" in email or not ".com" in email:
-            return render(request, "accounts/signin.html", {"error" : "not a valid email"})
+        if not username:
+            return render(request, "accounts/signin.html", {"error" : "please input a username"})
         elif not password:
             return render(request, "accounts/signin.html", {"error" : "please input a password"})
-        data = {"email" : email, "password" : password}
-        return render(request, "accounts/signin.html", data)
+
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            error = "Invalid credentials"
+            return render(request, "accounts/signin.html",{"error" : error})
+        else:
+            login(request, user)
+            return redirect("home")
 # Create your views here.
