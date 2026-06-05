@@ -1,0 +1,128 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--bg-color);
+    font-family: regular;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 50px;
+    background-color: var(--forest-green);
+}
+
+header nav{
+    display: flex;
+}
+
+header nav ul{
+    display: flex;
+    column-gap: 50px;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li:hover{
+    scale: 1.09;
+    height: 100%;
+    border-bottom: 1px solid white;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+nav ul li:last-child a{
+    color: var(--Nigerian-gold);
+    font-weight: bold;
+}
+
+nav ul li:not(:last-child) a:hover{
+    text-shadow: 2px 2px 4px var(--Nigerian-gold);
+}
+
+.search{
+    width: 100%;
+    display: flex;
+    padding-inline: 100px;
+    padding-block: 8px;
+    position: relative;
+    border-bottom: 1px solid var(--muted);
+}
+
+.search label, .search label input{
+    width: 100%;
+}
+
+#search{
+    line-height: 2;
+    padding-inline: 10px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    outline: 0;
+    border: 2px solid var(--forest-green);
+}
+
+.search button{
+    background-color: var(--forest-green);
+    color: var(--bg-color);
+    outline: 0;
+    position: absolute;
+    top: 14%;
+    right: 7.5%;
+    padding: 11px 40px;
+    border: 0;
+    border-radius: 50px;
+    transition: all 0.4s ease-in-out;
+    font-family: regular;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.search button:hover{
+    background-color: var(--Nigerian-gold);
+    color: var(--text-color);
+}
+
+.profile{
+    max-width: max-content;
+    max-height: 24px;
+    cursor: pointer;
+}
+
+.profile:hover{
+    background-color: white;
+    border-radius: 50px;
+    padding: 0px;
+}
+.profile.active{
+    background-color: white;
+    border-radius: 50px;
+    padding: 0px;
+}

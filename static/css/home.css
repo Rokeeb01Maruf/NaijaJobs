@@ -1,0 +1,57 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+.container{
+    color: var(--text-color);
+    padding-block: 10px;
+    font-family: regular;
+}
+
+.category-box{
+    border-bottom: 1px solid var(--muted);
+    padding-bottom: 10px;
+    padding-inline: 50px;
+}
+
+.category-box, .category{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.category{
+    border-left: 1px solid var(--muted);
+    column-gap: 10px;
+    padding-left: 10px;
+    overflow-x: hidden;
+}
+
+.category button{
+    min-width: max-content;
+    padding: 5px 7px;
+    font-family: regular;
+    border: 0;
+}
+
+.category button:hover{
+    background-color: var(--Nigerian-gold);
+}
+
+.selected{
+    background-color: var(--Nigerian-gold);
+}
+
