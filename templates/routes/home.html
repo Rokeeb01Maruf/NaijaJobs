@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} NaijaJobs {% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+<section class="container">
+    <section class="category-box">
+        <aside>
+            <p>Category</p>
+        </aside>
+        <aside class="category">
+            <button class="selected">All</button>
+            <button>Technology / IT</button>
+            <button>Finance</button>
+            <button>Marketing & sales</button>
+            <button>Design & Creative</button>
+            <button>Customer service</button>
+            <button>Education & Training</button>
+            <button>Healthcare</button>
+            <button>Engineering</button>
+            <button>Administrantion / Office</button>
+            <button>Hospitality & Tourism</button>
+        </aside>
+    </section>
+</section>
+{% if request.user.is_authenticated %}
+    <p>Welcome {{ request.user.role }}</p>
+{% endif %}
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
