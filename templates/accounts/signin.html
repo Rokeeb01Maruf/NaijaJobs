@@ -6,9 +6,9 @@
         {% csrf_token %}
         <h2 class="section-name">Signin</h2>
         <label for="email">
-            <p>Email</p>
-            <input type="email" name="email" class="focus inmail" id="email">
-            <p class="pemail">*Please input a valid email</p>
+            <p>Username</p>
+            <input type="text" name="email" class="focus inmail" id="email">
+            <p class="pemail">*Please input a valid username</p>
         </label>
         <label for="password">
             <p>Password</p>
@@ -18,7 +18,9 @@
         <button type="submit" class="button">Sign in</button>
         {% if error %}
             <p style="color: red;">{{ error }}</p>
+        {% elif message %}
+            <p style="color: green;">{{ message }}</p>
         {% endif %}
-    </form
+    </form>
 {% endblock %}
 {% block script %} <script src="{% static 'js/signin.js' %}"></script> {% endblock %}
