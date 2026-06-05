@@ -144,7 +144,7 @@ form .button:hover{
     color: var(--muted);
 }
 
-.pemail, .ppassword, .ifirst, .ilast, .isecond, .ipemail, .iuser, .ipass1, .ipass2, .iread{
+.pemail, .ppassword, .prole,.ifirst, .ilast, .isecond, .ipemail, .iuser, .ipass1, .ipass2, .iread{
     font: .7rem regular;
     color: red;
     display: none;
@@ -177,4 +177,33 @@ form .button:hover{
     width: fit-content;
     height: fit-content;
     cursor: pointer;
+}
+
+.role-container{
+    width: 100%;
+}
+
+.radio{
+    display: flex;
+    width: 100%;
+    align-content: center;
+}
+
+.role-container p:first-child{
+    margin-bottom: 2px;
+}
+
+.radio label{
+    width: 30%;
+}
+
+.seeker, .employer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.seeker input, .employer input{
+    max-width: 14px;
 }
