@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {% load static %}
+    <title>{% block title %} {% endblock %}</title>
+    {% block end_css %} <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
+    {% block style %} {% endblock %}
 </head>
 <body>
-    
+    <header>
+        <div class="logo"><a href=""><img src="{% static 'svg/logo-light.svg' %}" width="90" alt=""></a></div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="">Contact</a></li>
+                {% if request.user.is_authenticated and request.user.role == "Job seeker" %}
+                    <li><a href="{% url 'signin' %}">My Job Applications</a></li>
+                    <li><img src="{% static 'svg/user-gold.svg' %}" alt=""></li>
+                {% elif request.user.is_authenticated and request.user.role == "Employer" %}
+                    <li><a href="{% url 'signin' %}">Dashboard</a></li>
+                    <li class="profile"><img src="{% static 'svg/user-gold.svg' %}" alt=""></li>
+                {% else %}
+                    <li><a href="{% url 'signin' %}">Sign in</a></li>
+                    <li><a href="{% url 'signup' %}">Sign up</a></li>
+                {% endif %}
+                <li><a href="">Become an Employer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="search">
+        <label for="search">
+            <input type="search" name="search" id="search">
+        </label>
+        <button class="find">Search</button>
+    </section>
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+    <footer></footer>
+    {% block script %}{% endblock %}
 </body>
 </html>
