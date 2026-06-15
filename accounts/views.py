@@ -46,7 +46,6 @@ def signup(request):
                 )
                 user.set_password(password)
                 user.save()
-                print(const)
                 login(request, user)
                 return redirect("signin")
             except Exception as e:

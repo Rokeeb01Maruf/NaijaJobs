@@ -1,0 +1,151 @@
+{% extends "employer/base.html" %}
+{% load static %}
+{% block title %} Profile {% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/employers-profile.css' %}">{% endblock %}
+{% block content %}
+    {% if not_found == False and profile %}
+        <div class="container">
+            <h2 class="h2">Employer</h2>
+            <h3 class="h3">My profile</h3>
+            <section class="main">
+                <article>
+                    <div class="image">
+                        <img src="{% static 'svg/user-black.svg' %}" height="150" alt="">
+                        <h4>{{ request.user.first_name }} {{ request.user.last_name }}</h4>
+                        <p>{{ profile.office_held }}</p>
+                        <p>{{ profile.company_name }}</p>
+                    </div>
+                    <div class="summary">
+                        <p>
+                            <img src="{% static 'svg/jobs-black.svg' %}" width="16" alt="">
+                            <b>15</b>
+                            <span title="Job(s) Posted">Job(s) Posted</span>
+                        </p>
+                        <p>
+                            <img src="{% static 'svg/jobs-black.svg' %}" width="16" alt="">
+                            <b>15</b>
+                            <span title="Application(s) recieved">Applications(s) Recieved</span>
+                        </p>
+                        <p>
+                            <img src="{% static 'svg/jobs-black.svg' %}" width="16" alt="">
+                            <b>15</b>
+                            <span title="Interview(s) Scheduled">Interviews Scheduled</span>
+                        </p>
+                    </div>
+                </article>
+                <article class="info">
+                    <header>
+                        <h3>Company Information</h3>
+                        <table>
+                            <tr>
+                                <th>Company Name:</th>
+                                <td>{{ profile.company_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Industry:</th>
+                                <td>{{ profile.industry }}</td>
+                            </tr>
+                            <tr>
+                                <th>Location:</th>
+                                <td>{{ profile.location }}</td>
+                            </tr>
+                            <tr>
+                                <th>Website:</th>
+                                <td><a href="{{ profile.website }}" target="_blank">{{ profile.website }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>About Us:</th>
+                                <td>{{ profile.about_us }}</td>
+                            </tr>
+                        </table>
+                    </header>
+                    <main>
+                        <h3>Contact Details</h3>
+                        <table>
+                            <tr>
+                                <th>Email:</th>
+                                <td>{{ profile.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>(+234) {{ profile.phone |add:0 }}</td>
+                            </tr>
+                            <tr>
+                                <th>Linkedin:</th>
+                                <td><a href="{{ profile.linkedin }}" target="_blank">{{ profile.linkedin }}</a></td>
+                            </tr>
+                        </table>
+                    </main>
+                    <footer>
+                        <h3>Notification settings</h3>
+                        <div class="input">
+                            <label for="app">
+                                <input type="checkbox" id="app" name="app" checked disabled>
+                                <b>Application Alerts</b>
+                            </label>
+                            <label for="email">
+                                <input type="checkbox" id="email" name="email" checked disabled>
+                                <b>Email Notifications</b>
+                            </label>
+                        </div>
+                    </footer>
+                </article>
+            </section>
+        </div>
+    {% else %}
+        <div class="pro">
+            <button class="btn"><img width="16" src="{% static 'svg/plus-white.svg' %}" alt="">Create Company's Profile</button>
+            <div class="profile-fill ">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <header>
+                        <legend>Create Company Profile</legend>
+                        <img src="{% static 'svg/close.svg' %}" alt="" class="close">
+                    </header>
+                    <main>
+                        <label for="name">
+                            <p>Company name</p>
+                            <input type="text" name="name" id="name" placeholder="NaijaJobs inc.">
+                        </label>
+                        <label for="industry">
+                            <p>Industry</p>
+                            <input type="text" name="industry" id="industry" placeholder="Technology">
+                        </label>
+                        <label for="location">
+                            <p>Location</p>
+                            <input type="text" name="location" id="location" placeholder="Challenge, Ibadan.">
+                        </label>
+                        <label for="website">
+                            <p>Website</p>
+                            <input type="text" name="website" id="website" placeholder="https://">
+                        </label>
+                        <label for="about-us" class="top">
+                            <p>Company description</p>
+                            <textarea name="about-us" rows="5" id="about-us"></textarea>
+                        </label>
+                        <label for="Email">
+                            <p>Company email</p>
+                            <input type="email" name="email" id="email" placeholder="example@gmail.com">
+                        </label>
+                        <label for="Phone">
+                            <p>Phone</p>
+                            <input type="text" name="phone" id="phone" placeholder="08081242090">
+                        </label>
+                        <label for="linkedin">
+                            <p>Company linkedin</p>
+                            <input type="text" name="linkedin" id="linkedin" placeholder="https://">
+                        </label>
+                        <label for="office">
+                            <p>Office held</p>
+                            <input type="text" name="office" id="office" placeholder="HR Manager">
+                        </label>
+                    </main>
+                    <footer>
+                        <button type="submit">Create Profile</button>
+                        <button type="button" class="close">Cancel</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

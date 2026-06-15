@@ -1,0 +1,104 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--bg-color);
+    display: flex;
+    max-width: 100vw;
+    width: 100vw;
+    font: 1rem regular;
+    max-height: 100vh;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+#section{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+#section, #section aside{
+    height: 100vh;
+    max-height: 100vh;
+}
+
+#section aside:first-child{
+    background-color: var(--forest-green);
+    flex: 20;
+}
+
+#section aside:first-child header{
+    padding: 30px 50px;
+}
+
+#section aside:last-child{
+    flex: 80;
+}
+
+#section aside:first-child ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    row-gap: 20px;
+}
+
+#section aside:first-child main{
+    padding-left: 70px;
+}
+
+#section aside:first-child ul li a{
+    color: var(--Nigerian-gold);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    font-weight: 500;
+    justify-content: left;
+    display: inline-flex;
+    width: 100%;
+    padding: 5px 0px 5px 20px;
+}
+
+#section aside:first-child ul li{
+    width: 162.06px;
+    padding: 0;
+    cursor: pointer;
+}
+
+bg{
+    border-left: 2px solid transparent;
+}
+
+#section aside:first-child ul li:hover, .bg-op{
+    background-color: #f5A62355;
+    border-left: 2px solid var(--Nigerian-gold);
+}
+
+#section aside:first-child main ul li:nth-child(2) a{
+    display: inline-flex;
+    justify-content: left;
+    width: 100%;
+    padding: 5px 0px 5px 20px;
+}

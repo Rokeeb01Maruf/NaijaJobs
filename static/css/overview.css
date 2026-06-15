@@ -1,0 +1,316 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+#container{
+    width: 100%;
+    height: 100%;
+    padding-block: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.job-summary a:not(:last-child){
+    text-decoration: none;
+    display: inline-block;
+    background-color: white;
+    z-index: 1;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    width: 150px;
+    color: var(--text-color);
+    font-size: .9rem;
+}
+
+.job-summary a:first-child h3{
+    color: purple;
+}
+
+.job-summary a:nth-child(2) h3{
+    color: var(--forest-green);
+}
+
+.job-summary a:nth-child(3) h3{
+    color: blue;
+}
+
+.job-summary a:last-child{
+    width: max-content;
+}
+
+.job-summary a:last-child h3{
+    color: var(--Nigerian-gold);
+}
+
+.highlight{
+    display: flex;
+    padding-inline: 30px;
+}
+
+.job-summary{
+    flex: 75;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile{
+    flex: 25;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: .9rem;
+    column-gap: 10px;
+}
+.profile p{
+    margin-bottom: 5px;
+}
+
+.applicants{
+    display: flex;
+    background-color: white;
+}
+
+.applicants article{
+    min-height: 70vh;
+    border: 1px solid lightgray;
+}
+
+.applicants article:first-child{
+    flex: 40;
+}
+
+.applicants article:nth-child(2){
+    flex: 60;
+    border-left: 0px solid var(--muted);
+}
+
+.applicants article h3{
+    font-size: .9rem;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 20px 30px;
+    border-bottom: 1px solid lightgray;
+}
+
+.green span{
+    color: var(--forest-green);
+}
+
+.job-cards{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 30px;
+    row-gap: 10px;
+    background-color: rgba(211, 211, 211, 0.5);
+    padding-block: 10px;
+    border-radius: 10px;
+    border: 0;
+}
+
+.job-cards header, .job-cards footer, .job-cards main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .8rem;
+    padding-inline: 10px;
+    margin-inline: 10px;
+}
+
+.job-cards header p{
+    background-color: var(--forest-green);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.job-cards main p, .job-cards main a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    column-gap: 2px;
+}
+
+.job-cards main a{
+    color: blue;
+    background-color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+.job-cards footer{
+    border-top: 1px solid lightgrey;
+    margin-inline: 0;
+    padding-inline: 20px;
+    padding-block: 10px;
+}
+
+.job-cards footer button{
+    padding: 5px 8px;
+    font-size: .7rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: regular;
+}
+
+.job-cards footer button:first-child{
+    background-color: white;
+    border: 1px solid lightgrey;
+}
+
+.job-cards footer button:last-child{
+    background-color: blue;
+    border: 0;
+    color: white;
+}
+
+.applications{
+    display:  flex;
+    flex-direction: column;
+}
+
+.applicants-card{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.applicants-card header, .applicants-card footer{
+    display: flex;
+    width: 100%;
+    align-items: start;
+    padding-inline: 20px;
+}
+
+.applicants-card header{
+    column-gap: 10px;
+    padding-bottom: 10px;
+}
+
+.applicants-card header .image{
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.applicants-card header .name{
+    display: flex;
+    flex-direction: column;
+    font-size: .8rem;
+    margin-top: 10px;
+    row-gap: 5px;
+}
+
+.applicants-card header .resume{
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+}
+
+.applicants-card header .resume a{
+    text-decoration: none;
+    background-color: lightblue;
+    color: blue;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.applicants-card footer{
+    border-top: 1px dashed lightgrey;
+    padding-block: 10px;
+    border-bottom: 1px solid lightgrey;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.applicants-card footer button{
+    padding: 7px 15px;
+    font: .8rem regular;
+    font-weight: bold;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+}
+
+.applicants-card footer button:first-child{
+    background-color: var(--forest-green);
+}
+
+.applicants-card footer button:first-child:hover{
+    background-color: green;
+}
+
+.applicants-card footer button:nth-child(2){
+    background-color: red;
+}
+
+.applicants-card footer button:nth-child(2):hover{
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
+.applicants-card footer button:last-child{
+    background-color: blue;
+}
+
+.applicants-card footer button:last-child:hover{
+    background-color: lightblue;
+}
+
+.pro{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font: 1.2rem regular;
+    color: var(--muted);
+}
+
+.post{
+    background-color: blue;
+    padding: 10px 15px;
+    color: white;
+    height: max-content;
+    border-radius: 5px;
+    align-self: center;
+    text-decoration: none;
+}
+
+.post:hover{
+    background-color: var(--Nigerian-gold);
+}

@@ -1,0 +1,92 @@
+{% extends "employer/base.html" %}
+{% load static %}
+{% block title %} Applications {% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/applications.css' %}"> {% endblock %}
+{% block content %}
+    <div class="container">
+        {% if request.user.role == "Employer" and request.user.employerProfile %}
+            <header>
+                <section>
+                    <h2>Applicants</h2>
+                    <nav>
+                        <ul>
+                            <li><a href="" class="selected">All Applicants</a></li>
+                            <li><a href="">Accepted</a></li>
+                            <li><a href="">Rejected</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </header>
+            <main>
+                <div class="applicants-card">
+                    <section>
+                        <div class="profile">
+                            <div class="image"><img src="{% static 'svg/user-black.svg' %}" alt=""></div>
+                            <div class="details">
+                                <h5>Sarah Johnson</h5>
+                                <p>sarah.j@gmail.com</p>
+                                <p>5 years experience in marketing</p>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button>Accept</button>
+                            <button>Reject</button>
+                            <button>View Applications</button>
+                        </div>
+                    </section>
+                    <section>
+                        <a href="">View Resume</a>
+                        <p>Cover letter "Lorem ipsum dolor, sit amet consectetur adipisicing elit."</p>
+                    </section>
+                </div>
+                <div class="applicants-card">
+                    <section>
+                        <div class="profile">
+                            <div class="image"><img src="{% static 'svg/user-black.svg' %}" alt=""></div>
+                            <div class="details">
+                                <h5>Sarah Johnson</h5>
+                                <p>sarah.j@gmail.com</p>
+                                <p>5 years experience in marketing</p>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button>Accept</button>
+                            <button>Reject</button>
+                            <button>View Applications</button>
+                        </div>
+                    </section>
+                    <section>
+                        <a href="">View Resume</a>
+                        <p>Cover letter "Lorem ipsum dolor, sit amet consectetur adipisicing elit."</p>
+                    </section>
+                </div>
+                <div class="applicants-card">
+                    <section>
+                        <div class="profile">
+                            <div class="image"><img src="{% static 'svg/user-black.svg' %}" alt=""></div>
+                            <div class="details">
+                                <h5>Sarah Johnson</h5>
+                                <p>sarah.j@gmail.com</p>
+                                <p>5 years experience in marketing</p>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button>Accept</button>
+                            <button>Reject</button>
+                            <button>View Applications</button>
+                        </div>
+                    </section>
+                    <section>
+                        <a href="">View Resume</a>
+                        <p>Cover letter "Lorem ipsum dolor, sit amet consectetur adipisicing elit."</p>
+                    </section>
+                </div>
+            </main>
+    </div>
+        {% elif request.user.role == "Employer" and not request.user.employerProfile %}
+            <div class="pro">
+                <p>Don't have a profile?</p>
+                <p>Click <a href="{% url 'employer profile' %}">Here</a> to go to and create company's pfrofile</p>
+            </div>
+        {% endif %}
+{% endblock %}

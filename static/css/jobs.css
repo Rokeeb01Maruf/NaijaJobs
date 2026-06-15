@@ -1,0 +1,315 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    padding-block: 30px;
+    position: relative;
+}
+
+.overlay{
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000090;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+}
+
+.overlay form {
+    width: 500px;
+    background-color: var(--bg-color);
+    height: max-content;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex{
+    display: flex;
+    transition: all 1s ease-in-out;
+}
+
+.error{
+    position: absolute;
+    top: 70px;
+    right: 550px;
+    background-color: white;
+    color: red;
+    font: 1rem regular;
+    transition: top 5s ease-in-out;
+    z-index: 9999999;
+    padding: 10px 20px;
+}
+
+form header, form footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: lightgrey;
+    border-bottom: 1px solid grey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+form main{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    row-gap: 5px;
+}
+
+form main lable{
+    display: flex;
+    flex-direction: column;
+    font:  1rem regular;
+    width: 100%;
+}
+
+form main label input{
+    width: 100%;
+    line-height: 1rem;
+    padding: 5px;
+    outline: 0;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+form main label select{
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+form main .salary{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    width: 100%;
+}
+
+form main .salary label{
+    width: 100%;
+    position: relative;
+}
+
+form main .relative{
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    background-color: var(--bg-color);
+    border: 1px solid lightgrey;
+    padding-block: 4.5px;
+    padding-inline: 5px;
+}
+
+form main label textarea{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid grey;
+    outline: 0;
+}
+
+form footer{
+    border-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid grey;
+}
+
+form footer button{
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 5px;
+    font: 1rem regular;
+    transition: all .3s ease-in-out;
+}
+
+form footer button:first-child{
+    border: 1px solid grey;
+}
+
+form footer button:first-child:hover{
+    background-color: grey;
+}
+
+form footer button:last-child:hover{
+    background-color: var(--Nigerian-gold);
+    color: var(--forest-green);
+}
+
+form footer button:last-child{
+    background-color: blue;
+    color: white;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid lightgrey;
+    border-top-right-radius: 5px;
+}
+
+
+.head button{
+    display: flex;
+    border: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+    font: 1rem regular;
+    column-gap: 5px;
+}
+
+.head button:hover{
+    background-color: var(--Nigerian-gold);
+}
+
+.heading{
+    display: flex;
+    flex-direction: column;
+}
+
+.heading nav{
+    padding-inline: 30px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-top: 0px solid lightgrey;
+}
+
+.heading nav ul{
+    display: flex;
+    column-gap: 20px;
+}
+
+.heading nav ul li{
+    list-style: none;
+}
+
+.heading nav ul li button{
+    border: 0;
+    font: 1rem regular;
+    background-color: transparent;
+    padding: 20px 0px;
+}
+
+.heading nav ul .highlight{
+    border-bottom: 2px solid blue;
+    color: blue;
+}
+
+.job-card{
+    margin-inline: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    margin-top: 20px;
+    border: 1px solid lightgrey;
+}
+
+.job-card header{
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    font-size: .8rem;
+    padding-bottom: 10px;
+}
+
+.job-card header h2{
+    font-size: .89rem;
+}
+
+.job-card header p{
+    background-color: var(--forest-green);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.job-card main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid lightgrey;
+    padding-top: 10px;
+}
+
+.job-card main section:first-child, .job-card main section:first-child p{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.job-card main section:first-child p{
+    column-gap: 5px;
+}
+
+.job-card main section:nth-child(2){
+    display: flex;
+    column-gap: 10px;
+}
+
+.job-card main section:nth-child(2) a{
+    padding: 7px 15px;
+    text-decoration: none;
+    color: white;
+    font: .8rem regular;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.job-card main section:nth-child(2) a:first-child{
+    background-color: blue;
+}
+
+.job-card main section:nth-child(2) a:nth-child(2){
+    background-color: red;
+}
+
+.pro{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.body{
+    height: 100%;
+}
+
+.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font: 1.2rem regular;
+    color: var(--muted);
+}

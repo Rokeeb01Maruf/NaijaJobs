@@ -1,1 +1,117 @@
 {% extends 'employer/base.html' %}
+{% load static %}
+{% block title %} Overview {% endblock %}
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'css/overview.css' %}">
+{% endblock %}
+{% block content %}
+    <section id="container">
+        {% if employer %}
+            <section class="highlight">
+                <section class="job-summary">
+                    <a href="{% url 'employer jobs' %}">
+                        <p>Total Jobs:</p>
+                        <h3>{{ job_counts }}</h3>
+                    </a>
+                    <a href="{% url 'employer jobs' %}">
+                        <p>Active Jobs:</p>
+                        <h3>{{ active_jobs }}</h3>
+                    </a>
+                    <a href="{% url 'employer applications' %}">
+                        <p>Total Applications:</p>
+                        <h3>0</h3>
+                    </a>
+                    <a href="{% url 'employer interviews' %}">
+                        <p>Interviews Scheduled:</p>
+                        <h3>0</h3>
+                    </a>
+                    <a href="{% url 'employer jobs' %}" class="post">Post a job</a>
+                </section>
+                <section class="profile">
+                    <a href="">
+                        <img width="28" src="{% static 'svg/user-black.svg' %}" alt="">
+                    </a>
+                    <p>{{ request.user.first_name }} {{request.user.last_name}}</p>
+                </section>
+            </section>
+            <section class="applicants">
+                <article>
+                    <h3>Job Listings</h3>
+                    {% if job_counts > 0 %}
+                    <section class="jobs">
+                        {% for job in jobs %}
+                            <div class="job-cards">
+                                <header>
+                                    <h4>{{ job.title }}</h4>
+                                    <p>{{ job.status }}</p>
+                                </header>
+                                <main>
+                                    <p>
+                                        <img src="{% static 'svg/applications.svg' %}" width="16px" alt="">
+                                        {{ job.applicants.count }} Applicants
+                                    </p>
+                                    <a href="">
+                                        <img src="{% static 'svg/applications.svg' %}" width="16px" alt="">
+                                        View Applicants
+                                    </a>
+                                </main>
+                                <footer>
+                                    <p>Posted: {{ job.date_posted|date:"M d, Y" }}</p>
+                                    <div class="alt">
+                                        <button class="button">Edit</button>
+                                        <button class="button">View Applications</button>
+                                    </div>
+                                </footer>
+                            </div>
+                        {% endfor %}
+                        </section>
+                    {% else %}
+                    <div class="empty">
+                        <p>No jobs posted yet.</p>
+                    </div>
+                    {% endif %}
+                </article>
+                <article>
+                    <h3 class="green">Applicants for <span>Software Engineer</span></h3>
+                    {% if job_counts > 0 %}
+                        <section class="applications">
+                            <div class="applicants-card">
+                                <header>
+                                    <div class="image">
+                                        <img src="{% static 'svg/user-black.svg' %}" width="300" alt="">
+                                    </div>
+                                    <div class="name">
+                                        <h4>Micheal Smith</h4>
+                                        <div class="resume">
+                                            <p>Resume</p>
+                                            <a href="">View Resume</a>
+                                        </div>                            
+                                        <p>Cover letter "Lorem ipsum dolor sit amet consectetur adipisicing 
+                                            elit. Non sapiente nulla sequi laudantium, magnam tempore voluptatum 
+                                            sunt quis pariatur illum optio molestias, ratione quaerat dignissimos, 
+                                            dolore est in minus animi."
+                                        </p>
+                                    </div>
+                                </header>
+                                <footer>
+                                    <button>Accept</button>
+                                    <button>Reject</button>
+                                    <button>View Profile</button>
+                                </footer>
+                            </div>
+                        </section>
+                    {% else %}
+                        <div class="empty">
+                            <p>No Job posted yet</p>
+                        </div>
+                    {% endif %}
+                </article>
+            </section>
+        {% else %}
+            <div class="pro">
+                <p>Don't have a profile?</p>
+                <p>Click <a href="{% url 'employer profile' %}">Here</a> to go to and create company's pfrofile</p>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

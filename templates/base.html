@@ -19,7 +19,7 @@
                     <li><a href="{% url 'signin' %}">My Job Applications</a></li>
                     <li><img src="{% static 'svg/user-gold.svg' %}" alt=""></li>
                 {% elif request.user.is_authenticated and request.user.role == "Employer" %}
-                    <li><a href="{% url 'signin' %}">Dashboard</a></li>
+                    <li><a href="{% url 'employer overview' %}">Dashboard</a></li>
                     <li class="profile"><img src="{% static 'svg/user-gold.svg' %}" alt=""></li>
                 {% else %}
                     <li><a href="{% url 'signin' %}">Sign in</a></li>

@@ -1,0 +1,175 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    font: .9rem regular;
+}
+
+.container header{
+    height: max-content;
+    width: 100%;
+}
+
+.container header{
+    background-color: white;
+    border:  1px solid lightgrey;
+}
+
+.container header section:first-child{
+    padding-top: 20px;
+}
+
+.container section:first-child h2{
+    padding-inline: 30px;
+    width: 100;
+    padding-bottom: 10px;
+}
+
+.container section:first-child nav{
+    padding-inline: 30px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid lightgrey;
+    padding-block: 10px;
+}
+
+.container section:first-child nav ul{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.container section:first-child nav ul li{
+    list-style: none;
+}
+
+.container section:first-child nav ul li a{
+    text-decoration: none;
+    color: var(--text-color);
+    padding-bottom: 10px;
+}
+
+.container section:first-child nav ul .selected{
+    color: blue;
+    border-bottom: 2px solid blue;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.image{
+    max-width: 100px;
+    max-height: 100px;
+    height: 80px;
+    width: 80px;
+}
+
+.image img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.button{
+    display: flex;
+    column-gap: 10px;
+}
+
+.button button{
+    border: 0;
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-family: regular;
+    color: white;
+    font-weight: bold;
+    max-height: fit-content;
+}
+
+.button button:first-child{
+    background-color: green;
+}
+
+.button button:nth-child(2){
+    background-color: red;
+}
+
+.button button:nth-child(3){
+    background-color: lightgrey;
+    color: var(--text-color);
+}
+
+.applicants-card{
+    background-color: white;
+    padding: 10px 15px;
+    border: 1px solid lightgrey;
+}
+
+.applicants-card section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.applicants-card section:first-child{
+    padding-bottom: 5px;
+}
+
+.applicants-card section:nth-child(2){
+    justify-content: center;
+    border-top: 1px solid lightgrey;
+    padding-top: 5px;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.applicants-card section:nth-child(2) a{
+    text-decoration: none;
+    background-color: lightblue;
+    color: blue;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.pro{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+}

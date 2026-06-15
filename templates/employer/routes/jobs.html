@@ -1,0 +1,110 @@
+{% extends "employer/base.html" %}
+{% load static %}
+{% block title %} Jobs {% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/jobs.css' %}"> {% endblock %}
+{% block content %}
+    {% if employer %}
+        <div class="container">
+            <div class="overlay">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <header>
+                        <h3>Post a new job</h3>
+                        <img src="{% static 'svg/close.svg' %}" alt="">
+                    </header>
+                    <main>
+                        <label for="title">
+                            <p>Job Title</p>
+                            <input type="text" id="title" name="title">
+                        </label>
+                        <label for="job_type">
+                            <p>Job Type</p>
+                            <select name="job_type" id="job_type">
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Internship">Internship</option>
+                                <option value="Contract">Contract</option>
+                            </select>
+                        </label>
+                        <div class="salary">
+                            <label for="min_salary">
+                                <p>Salary(min)</p>
+                                <input type="number" id="min_salary" name="min_salary">
+                                <button type="button" class="relative">NGN</button>
+                            </label>
+                            <label for="max_salary">
+                                <p>Salary(max)</p>
+                                <input type="number" id="max_salary" name="max_salary">
+                                <button class="relative" type="button">NGN</button>
+                            </label>
+                        </div>
+                        <label for="description">
+                            <p>Job Description</p>
+                            <textarea name="description" rows="3" id="description"></textarea>
+                        </label>
+                        <label for="category">
+                            <p>Category</p>
+                            <input type="text" id="category" name="category" placeholder="Technology">
+                        </label>
+                        <label for="date_closing">
+                            <p>Application deadline</p>
+                            <input type="date" id="date_closing" name="date_closing">
+                        </label>
+                    </main>
+                    <footer>
+                        <button type="button">Cancel</button>
+                        <button>Post job</button>
+                    </footer>
+                </form>
+            </div>
+            <section class="heading">
+                <div class="head">
+                    <h2>Job Listings</h2>
+                    <button>
+                        <img src="{% static 'svg/plus.svg' %}" width="24" alt="">
+                        <p>Post a Job</p>
+                    </button>
+                </div>
+                <nav>
+                    <ul>
+                        <li><button class="highlight">All Jobs</button></li>
+                        <li><button>Open</button></li>
+                        <li><button>Closed</button></li>
+                    </ul>
+                </nav>
+            </section>
+            <section class="body">
+                {% if jobs %}
+                    {% for job in jobs %}
+                        <div class="job-card">
+                            <header>
+                                <h2>{{ job.title }}</h2>
+                                <p>{{ job.status }}</p>
+                            </header>
+                            <main>
+                                <section>
+                                    <p><img src="{% static 'svg/inbox-black.svg' %}" width="16" alt="">15 Applications</p>
+                                    <p>Posted {{ job.date_posted }} | Deadline {{ job.date_closing }}</p>
+                                </section>
+                                <section>
+                                    <a href="">View Applicants</a>
+                                    <a href="">Close Job</a>
+                                </section>
+                            </main>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty">
+                        <p>No job posted yet</p>
+                    </div>
+                {% endif %}
+            </section>
+        </div>
+    {% else %}
+        <div class="pro">
+            <p>Don't have a profile?</p>
+            <p>Click <a href="{% url 'employer profile' %}">Here</a> to go to and create company's pfrofile</p>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block script %} <script src="{% static 'js/jobs.js' %}"></script> {% endblock %}

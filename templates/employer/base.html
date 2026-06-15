@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>{% block title %} Dashboard | Overview {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/employer-base.css' %}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <section id="section">
+        <aside>
+            <header>
+                <a href=""><img src="{% static 'svg/logo-light.svg' %}" alt width="90"></a>
+            </header>
+            <main>
+                <ul>
+                    <li class="bg">
+                        <a href="{% url 'employer overview' %}">
+                            <img src="{% static 'svg/overview.svg' %}" width="20" alt="">Overview
+                        </a>
+                    </li>
+                    <li class="bg a">
+                        <a class="#a" href="{% url 'employer jobs' %}">
+                            <img src="{% static 'svg/job.svg' %}" width="20" alt="">Jobs
+                        </a>
+                    </li>
+                    <li class="bg">
+                        <a href="{% url 'employer applications' %}">
+                            <img src="{% static 'svg/applications.svg' %}" width="20" alt="">Applications
+                        </a>
+                    </li>
+                    <li class="bg">
+                        <a href="{% url 'employer interviews' %}">
+                            <img src="{% static 'svg/interview.svg' %}" width="20" alt="">Interviews
+                        </a>
+                    </li>
+                    <li class="bg">
+                        <a href="{% url 'employer profile' %}">
+                            <img src="{% static 'svg/user-gold.svg' %}" width="20" alt="">Profile
+                        </a>
+                    </li>
+                </ul>
+            </main>
+        </aside>
+        <aside>
+            {% block content %} {% endblock %}
+        </aside>
+    </section>
+<script src="{% static 'js/employer-base.js' %}"></script>
+{% block script %} {% endblock %}
+</body>
+</html>
