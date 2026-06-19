@@ -19,7 +19,7 @@
                     </a>
                     <a href="{% url 'employer applications' %}">
                         <p>Total Applications:</p>
-                        <h3>0</h3>
+                        <h3>{{ total_applicants }}</h3>
                     </a>
                     <a href="{% url 'employer interviews' %}">
                         <p>Interviews Scheduled:</p>
@@ -28,7 +28,7 @@
                     <a href="{% url 'employer jobs' %}" class="post">Post a job</a>
                 </section>
                 <section class="profile">
-                    <a href="">
+                    <a href="{% url 'employer profile'%}">
                         <img width="28" src="{% static 'svg/user-black.svg' %}" alt="">
                     </a>
                     <p>{{ request.user.first_name }} {{request.user.last_name}}</p>
@@ -38,32 +38,37 @@
                 <article>
                     <h3>Job Listings</h3>
                     {% if job_counts > 0 %}
-                    <section class="jobs">
-                        {% for job in jobs %}
-                            <div class="job-cards">
-                                <header>
-                                    <h4>{{ job.title }}</h4>
-                                    <p>{{ job.status }}</p>
-                                </header>
-                                <main>
-                                    <p>
-                                        <img src="{% static 'svg/applications.svg' %}" width="16px" alt="">
-                                        {{ job.applicants.count }} Applicants
-                                    </p>
-                                    <a href="">
-                                        <img src="{% static 'svg/applications.svg' %}" width="16px" alt="">
-                                        View Applicants
+                        <section class="jobs">
+                            {% for job in jobs %}
+                                <form action="{% url 'employer overview' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ job.id }}" name="hidden">
+                                    <button class="job-cards" href="">
+                                        <input type="hidden" value="{{ job }}">
+                                        <header>
+                                            <h4>{{ job.title }}</h4>
+                                            <p>{{ job.status }}</p>
+                                        </header>
+                                        <main>
+                                            <p>
+                                                <img src="{% static 'svg/applications.svg' %}" width="16px" alt="">
+                                                {{ job.applicants.count }} Applicants
+                                            </p>
+                                            <a href="{% url 'employer applications' %}">
+                                                <img src="{% static 'svg/applications.svg' %}" width="16px" alt="">
+                                                View Applicants
+                                            </a>
+                                        </main>
+                                        <footer>
+                                            <p>Posted: {{ job.date_posted|date:"M d, Y" }}</p>
+                                            <div class="alt">
+                                                <a class="button" href="{% url 'employer jobs' %}">Edit</a>
+                                                <a class="button" href="{% url 'employer applications' %}">View Applications</a>
+                                            </div>
+                                        </footer>
                                     </a>
-                                </main>
-                                <footer>
-                                    <p>Posted: {{ job.date_posted|date:"M d, Y" }}</p>
-                                    <div class="alt">
-                                        <button class="button">Edit</button>
-                                        <button class="button">View Applications</button>
-                                    </div>
-                                </footer>
-                            </div>
-                        {% endfor %}
+                                </form>
+                            {% endfor %}
                         </section>
                     {% else %}
                     <div class="empty">
@@ -72,37 +77,47 @@
                     {% endif %}
                 </article>
                 <article>
-                    <h3 class="green">Applicants for <span>Software Engineer</span></h3>
-                    {% if job_counts > 0 %}
+                    <h3 class="green">Applicants <small> (select job to view applicants)</small></h3>
+                    {% if applications != "empty" %}
                         <section class="applications">
-                            <div class="applicants-card">
-                                <header>
-                                    <div class="image">
-                                        <img src="{% static 'svg/user-black.svg' %}" width="300" alt="">
-                                    </div>
-                                    <div class="name">
-                                        <h4>Micheal Smith</h4>
-                                        <div class="resume">
-                                            <p>Resume</p>
-                                            <a href="">View Resume</a>
-                                        </div>                            
-                                        <p>Cover letter "Lorem ipsum dolor sit amet consectetur adipisicing 
-                                            elit. Non sapiente nulla sequi laudantium, magnam tempore voluptatum 
-                                            sunt quis pariatur illum optio molestias, ratione quaerat dignissimos, 
-                                            dolore est in minus animi."
-                                        </p>
-                                    </div>
-                                </header>
-                                <footer>
-                                    <button>Accept</button>
-                                    <button>Reject</button>
-                                    <button>View Profile</button>
-                                </footer>
-                            </div>
+                            {% for application in applications %}
+                                <div class="applicants-card">
+                                    <header>
+                                        <div class="image">
+                                            <img src="{% static 'svg/user-black.svg' %}" width="300" alt="">
+                                        </div>
+                                        <div class="name">
+                                            <h4>{{ application.applicant.first_name }} {{ application.applicant.last_name }}</h4>
+                                            <div class="resume">
+                                                <p>{{ application.applicant.email }}</p>
+                                                <p>{{ application.applicant.username }}</p>
+                                            </div>                            
+                                            <p>{{ application.job.title }}</p>
+                                            <p>{{ application.job.user.company_name }}</p>
+                                        </div>
+                                    </header>
+                                    <footer>
+                                        {% if application.status == "pending" %}
+                                            <a 
+                                            href="{% url 'alter application' application.job.id application.applicant.username %}?alter=accept"
+                                            >Accept</a>
+                                            <a 
+                                            href="{% url 'alter application' application.job.id application.applicant.username %}?alter=reject"
+                                            >Reject</a>
+                                        {% else %}
+                                            {% if application.status == 'Accepted' %}
+                                                <button class="accepted">{{ application.status }}</button>
+                                            {% else %}
+                                                <button class="rejectedted">{{ application.status }}</button>
+                                            {% endif %}
+                                        {% endif %}
+                                    </footer>
+                                </div>
+                            {% endfor %}
                         </section>
                     {% else %}
                         <div class="empty">
-                            <p>No Job posted yet</p>
+                            <p>No applicants for the job selected</p>
                         </div>
                     {% endif %}
                 </article>
@@ -115,3 +130,4 @@
         {% endif %}
     </section>
 {% endblock %}
+{% block script %} <script src="{% static 'js/overview.js' %}"></script> {% endblock %}

@@ -27,15 +27,47 @@ forming.addEventListener("submit", (e)=>{
     const description = data.get("description")
     const category = data.get("category")
     const dateClosing = data.get("date_closing")
+    const error = document.querySelector(".container .error")
+    // e.preventDefault()
+    console.log(data, title, jobType, salaryMax, salaryMin, description, category, dateClosing)
     function defineError(a){
-        const error = document.createElement("p")
         error.textContent = a
-        error.className = "error"
-        container.insertBefore(error, overlay)
+        error.classList.add("show")
+        setTimeout(()=> error.classList.remove("show"), 1000)
     }
+    container.insertBefore(error, overlay)
     if(!title){
         e.preventDefault()
-        clearTimeout(setTimeout(()=>defineError("Please input the job title"), 1000))
+        defineError("Please input the job title")
+        return
+    }else if(!jobType){
+        e.preventDefault()
+        defineError("Please input the job type")
+        return
+    }else if(!salaryMin){
+        e.preventDefault()
+        defineError("Please input the Salary(min)")
+        return
+    }else if(!salaryMax){
+        e.preventDefault()
+        defineError("Please input the Salary(max)")
+        return
+    }else if(salaryMax < salaryMin){
+        e.preventDefault()
+        defineError("Salary(max) cannot be less that Salary(Min)")
+        return
+    }else if(!description){
+        e.preventDefault()
+        defineError("Please input the job description")
+        return
+    }else if(!category){
+        e.preventDefault()
+        defineError("Please input the job category")
+        return
+    }else if(!dateClosing){
+        e.preventDefault()
+        defineError("Please input the Application deadline")
+        return
     }
 })
 

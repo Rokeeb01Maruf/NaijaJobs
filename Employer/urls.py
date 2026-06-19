@@ -7,4 +7,6 @@ urlpatterns = [
     path('employer/applications', views.employer_applications, name='employer applications'),
     path('employer/interviews', views.employer_interviews, name='employer interviews'),
     path('employer/profile', views.employer_profile, name='employer profile'),
+    path('application/<int:job_id>/<slug:username>', views.alter_application, name='alter application'),
+    path('jobs/<int:job_id>/close', views.close_job, name='close job'),
 ]

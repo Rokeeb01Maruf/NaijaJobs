@@ -10,22 +10,55 @@
 </head>
 <body>
     <header>
-        <div class="logo"><a href=""><img src="{% static 'svg/logo-light.svg' %}" width="90" alt=""></a></div>
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'svg/logo-light.svg' %}" width="90" alt=""></a>
+        </div>
         <nav>
+            
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="">Contact</a></li>
-                {% if request.user.is_authenticated and request.user.role == "Job seeker" %}
-                    <li><a href="{% url 'signin' %}">My Job Applications</a></li>
-                    <li><img src="{% static 'svg/user-gold.svg' %}" alt=""></li>
+                {% if request.user.is_authenticated and request.user.role == "Job Seeker" %}
+                    <li><a href="{% url 'my_applications' %}">My Job Applications</a></li>
+                    <li class="profile">
+                        <div class="absolute">
+                            <p>Username: {{ request.user.username }}</p>
+                            <p>Email: {{ request.user.email }}</p>
+                            <p>Role: {{ request.user.role }}</p>
+                        </div>
+                        <img src="{% static 'svg/user-gold.svg' %}" alt="">
+                    </li>
+                    <li><a href="">Become an Employer</a></li>
+                    <li class="log">
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'svg/logout.svg' %}" width="24" alt=""><p>Log out</p>
+                            </button>
+                        </form>
+                    </li>
                 {% elif request.user.is_authenticated and request.user.role == "Employer" %}
                     <li><a href="{% url 'employer overview' %}">Dashboard</a></li>
-                    <li class="profile"><img src="{% static 'svg/user-gold.svg' %}" alt=""></li>
+                    <li class="profile">
+                        <div class="absolute">
+                            <p>Username: {{ request.user.username }}</p>
+                            <p>Email: {{ request.user.email }}</p>
+                            <p>Role: {{ request.user.role }}</p>
+                        </div>
+                        <img src="{% static 'svg/user-gold.svg' %}" alt="">
+                    </li>
+                    <li class="log">
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'svg/logout.svg' %}" width="24" alt=""><p>Log out</p>
+                            </button>
+                        </form>
+                    </li>
                 {% else %}
                     <li><a href="{% url 'signin' %}">Sign in</a></li>
                     <li><a href="{% url 'signup' %}">Sign up</a></li>
                 {% endif %}
-                <li><a href="">Become an Employer</a></li>
             </ul>
         </nav>
     </header>
@@ -40,5 +73,6 @@
     </main>
     <footer></footer>
     {% block script %}{% endblock %}
+<script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

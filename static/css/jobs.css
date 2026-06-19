@@ -49,8 +49,9 @@
 }
 
 .error{
+    display: none;
     position: absolute;
-    top: 70px;
+    top: 0px;
     right: 550px;
     background-color: white;
     color: red;
@@ -58,6 +59,11 @@
     transition: top 5s ease-in-out;
     z-index: 9999999;
     padding: 10px 20px;
+}
+
+.show{
+    top: 70px;
+    display: flex;
 }
 
 form header, form footer{
@@ -231,6 +237,8 @@ form footer button:last-child{
     border: 1px solid lightgrey;
 }
 
+
+
 .job-card header{
     display: flex;
     align-items: center;
@@ -249,6 +257,10 @@ form footer button:last-child{
     padding: 5px 20px;
     border-radius: 5px;
     font-weight: 600;
+}
+
+.job-card header p.closed{
+    background-color: grey;
 }
 
 .job-card main{
@@ -274,7 +286,7 @@ form footer button:last-child{
     column-gap: 10px;
 }
 
-.job-card main section:nth-child(2) a{
+.job-card main section:nth-child(2) a, .job-card main section:nth-child(2) form button{
     padding: 7px 15px;
     text-decoration: none;
     color: white;
@@ -287,8 +299,10 @@ form footer button:last-child{
     background-color: blue;
 }
 
-.job-card main section:nth-child(2) a:nth-child(2){
+.job-card main section:nth-child(2) form button{
     background-color: red;
+    border: 0;
+    cursor: pointer;
 }
 
 .pro{

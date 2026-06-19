@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/job-application.css'%}"> {% endblock %}
+{% block title %}My Applications{% endblock %}
+{% block content %}
+    {% if applications %}
+    <section id="container">
+        <aside class="first">
+            <h3>Profile</h3>
+            <div class="profiles">
+                <img src="{% static 'svg/user-black.svg' %}" alt="">
+                <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+                <p>{{ request.user.role }}</p>
+            </div>
+            <div class="stats">
+                <p class="mail"><img width="16" src="{% static 'svg/mail.svg' %}" alt=""> {{ request.user.email }}</p>
+                <p>Total Applications <b class="brown">({{ total }})</b></p>
+                <p>Accepted Applications <b class="green">({{ accepted }})</b></p>
+                <p>Pending Applications <b class="blue">({{ pending }})</b></p>
+                <p>Rejected Applications <b class="red">({{ rejected }})</b></p>
+            </div>
+        </aside>
+        <aside class="second">
+            <h3>Applications</h3>
+            {% for application in applications %}
+                <a class="application-card" href="{% url 'job_detail' application.job.id %}">
+                    <article class="first">
+                        <section class="left">
+                            <h4>{{ application.job.title }}</h4>
+                            <p>{{ application.job.user.employer_profile.company_name }}</p>
+                        </section>
+                        <section class="right">
+                            {% if application.status == "pending" %}
+                                <button class="btn grey" type="button">{{ application.status }}</button>
+                            {% elif application.status == "Accepted" %}
+                                <button class="btn green">Accepted</button>
+                            {% elif application.status == "Rejected" %}
+                                <button class="btn red">Rejected</button>
+                            {% endif %}
+                        </section>
+                    </article>
+                    <article class="second">
+                        <div class="location">
+                            <img width="16" src="{% static 'svg/location.svg' %}" alt="">
+                            <p>{{ application.job.user.employer_profile.location }}</p>
+                        </div>
+                        <div class="type">
+                            <img width="16" src="{% static 'svg/type.svg' %}" alt="">
+                            <p>{{ application.job.job_type }}</p>
+                        </div>
+                        <div class="time">
+                            <img width="16" src="{% static 'svg/time.svg' %}" alt="">
+                            <p>Applied on {{ application.applied_at }}</p>
+                        </div>
+                    </article>
+                </a>
+            {% endfor %}
+        </aside>
+    </section>
+    {% else %}
+    <div class="empty-container">
+        <p>Empty Applications</p>
+    </div>
+    {% endif %}
+
+{% endblock %}

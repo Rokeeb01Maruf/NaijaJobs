@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+{% block title %}Job Detail{% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/job_detail.css' %}"> {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="absoluted">
+            <div class="alert-card">
+                <section>
+                    <h3>Alert</h3>
+                    <img class="close" src="{% static 'svg/close.svg' %}" alt="">
+                </section>
+                <main>
+                    <p>You need to signin before you can apply</p>
+                </main>
+                <footer>
+                    <a href="{% url 'signin' %}?next={{ request.path }}">Sign in</a>
+                    <a href="{% url 'signup' %}?next={{ request.path }}">Sign up</a>
+                </footer>
+            </div>
+        </div>
+        <section class="section">
+            <article>
+                <section class="first-flex">
+                    <div class="header-container">
+                        <h3>{{ job.title }}</h3>
+                        <p class="profile">{{ job.user.employer_profile.company_name }}</p>
+                        <div class="last-line">
+                            <div class="location">
+                                <img width="12" src="{% static 'svg/location.svg' %}" alt="">
+                                <p>{{ job.user.employer_profile.location }}</p>
+                            </div>
+                            <div class="type">
+                                <img width="12" src="{% static 'svg/type.svg' %}" alt="">
+                                <p>{{ job.job_type }}</p>
+                            </div>
+                            <div class="time">
+                                <img width="12" src="{% static 'svg/time.svg' %}" alt="">
+                                <p>{{ job.date_posted | naturaltime }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                        {% if applied %}
+                            <button class="applied" type="button">Applied</button>
+                        {% else %}
+                            <form action="{% url 'apply' job.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Apply now</button>
+                            </form>
+                        {% endif %}
+                    {% else %}
+                        <div class="auth">
+                            <button type="button">Apply now</button>
+                        </div>
+                    {% endif %}
+                </section>
+                <section class="second-flex">
+                    <h3>Job Overview</h3>
+                    <p>{{ job.description }}</p>
+                </section>
+                <section class="last-flex">
+                    <h3>More details</h3>
+                    <div class="items">
+                        <b>Salary</b>
+                        <p>Range (&#8358; {{ job.salary_min|intcomma }}.00 - &#8358; {{ job.salary_max|intcomma }}.00)</p>
+                    </div>
+                    <div class="items">
+                        <b>Job Category</b>
+                        <p>{{ job.category }}</p>
+                    </div>
+                </section>
+            </article>
+            <article></article>
+        </section>
+        <section class="section">
+            <article>
+                <h3>Job Detail</h3>
+                <div class="sect">
+                    <b>Job Type</b>
+                    <p>{{ job.job_type }}</p>
+                </div>
+                <div class="sect">
+                    <b>Category</b>
+                    <p>{{ job.category }}</p>
+                </div>
+                <div class="sect">
+                    <b>Role</b>
+                    <p>{{ job.title }}</p>
+                </div>
+            </article>
+            <article>
+                <h3>Company overview</h3>
+                <p>{{ job.user.employer_profile.about_us }}</p>
+            </article>
+            <article>
+                <h3>View socials</h3>
+                <div class="linked">
+                    <a href="{{ job.user.employer_profile.linkedin }}"><img width="24" src="{% static 'svg/linkedin.svg' %}" alt=""></a>
+                    <a href="{{ job.user.employer_profile.website }}"><img width="24" src="{% static 'svg/globe.svg' %}" alt=""></a>
+                </div>
+            </article>
+        </section>
+    </div>
+{% endblock %}
+{% block script %} <script src="{% static 'js/job_detail.js' %}"></script> {% endblock %}

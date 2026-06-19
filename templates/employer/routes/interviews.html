@@ -3,14 +3,11 @@
 {% block title %} Interviews {% endblock %}
 {% block style %} <link rel="stylesheet" href="{% static 'css/interviews.css' %}"> {% endblock %}
 {% block content %}
-    {% if request.user.role == "Employer" and user.employerProfile %}
-        <div class="container">
-            <p>Coming soon...</p>
-        </div>
-    {% elif request.user.role == "Employer" and not user.employerProfile %}
-        <div class="pro">
+    <div class="container">
+        <p>This page is still under development</p>
+    </div>
+        <!-- <div class="pro">
             <p>Don't have a profile?</p>
             <p>Click <a href="{% url 'employer profile' %}">Here</a> to go to and create company's pfrofile</p>
-        </div>
-    {% endif %}
+        </div> -->
 {% endblock %}

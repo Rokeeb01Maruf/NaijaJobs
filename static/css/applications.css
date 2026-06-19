@@ -21,6 +21,12 @@
     font: .9rem regular;
 }
 
+p.time{
+    display: flex;
+    align-items: center;
+    column-gap: 2px;
+}
+
 .container header{
     height: max-content;
     width: 100%;
@@ -98,32 +104,43 @@
     column-gap: 10px;
 }
 
-.button{
+div.button{
     display: flex;
-    column-gap: 10px;
+    column-gap: 50px;
 }
 
-.button button{
+div.button button{
+    padding: 7px 15px;
+    border-radius: 5px;
+    font: 1rem regular;
     border: 0;
+    color: white;
+    margin-right: 100px;
+}
+
+button.accepted{
+    background-color: green;
+}
+
+button.rejected{
+    background-color: red;
+}
+
+div.button a{
     padding: 7px 15px;
     border-radius: 5px;
     font-family: regular;
     color: white;
-    font-weight: bold;
+    text-decoration: none;
     max-height: fit-content;
 }
 
-.button button:first-child{
+div.button a:first-child{
     background-color: green;
 }
 
-.button button:nth-child(2){
+div.button a:nth-child(2){
     background-color: red;
-}
-
-.button button:nth-child(3){
-    background-color: lightgrey;
-    color: var(--text-color);
 }
 
 .applicants-card{

@@ -5,6 +5,7 @@
 {% block content %}
     {% if employer %}
         <div class="container">
+            <p class="error"></p>
             <div class="overlay">
                 <form action="" method="post">
                     {% csrf_token %}
@@ -76,22 +77,33 @@
             <section class="body">
                 {% if jobs %}
                     {% for job in jobs %}
-                        <div class="job-card">
-                            <header>
-                                <h2>{{ job.title }}</h2>
-                                <p>{{ job.status }}</p>
-                            </header>
-                            <main>
-                                <section>
-                                    <p><img src="{% static 'svg/inbox-black.svg' %}" width="16" alt="">15 Applications</p>
-                                    <p>Posted {{ job.date_posted }} | Deadline {{ job.date_closing }}</p>
-                                </section>
-                                <section>
-                                    <a href="">View Applicants</a>
-                                    <a href="">Close Job</a>
-                                </section>
-                            </main>
-                        </div>
+                        {% if job.is_active %}
+                            <div class="job-card">
+                                <header>
+                                    <h2>{{ job.title }}</h2>
+                                    {% if job.status == "Open" %}
+                                        <p>Open</p>
+                                    {% else %}
+                                        <p class="closed">Closed</p>
+                                    {% endif %}
+                                </header>
+                                <main>
+                                    <section>
+                                        <p><img src="{% static 'svg/inbox-black.svg' %}" width="16" alt="">15 Applications</p>
+                                        <p>Posted {{ job.date_posted }} | Deadline {{ job.date_closing }}</p>
+                                    </section>
+                                    <section>
+                                        <a href="{% url 'employer applications' %}">View Applicants</a>
+                                        {% if job.status == "Open" %}
+                                            <form action="{% url 'close job' job.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit">Close Job</button>
+                                            </form>
+                                        {% endif %}
+                                    </section>
+                                </main>
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 {% else %}
                     <div class="empty">

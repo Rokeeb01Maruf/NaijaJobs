@@ -55,3 +55,56 @@
     background-color: var(--Nigerian-gold);
 }
 
+.job-container{
+    display: flex;
+    align-items: start;
+    background-color: var(--bg-color);
+    margin-inline: 50px;
+    fill-opacity: .5;
+}
+
+.job-container aside:first-child{
+    flex: 75;
+}
+
+.job-container aside:first-child a{
+    max-width: 33.333%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    text-decoration: none;
+    font: .89rem regular;
+    color: var(--text-color);
+    margin-block: 10px;
+    padding-block: 10px;
+    border-block: 1px solid grey;
+}
+
+.job-container aside:first-child a .first{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-container aside:first-child a  div form button{
+    border: 0;
+    background-color: blue;
+    color: white;
+    padding: 10px 15px;
+    border: 0;
+    font: 1rem;
+    border-radius: 5px;
+}
+
+.job-container aside:first-child a .second{
+    display: flex;
+    font: .8rem regular;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.job-container aside:last-child{
+    flex: 25;
+}
+
+

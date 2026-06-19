@@ -35,6 +35,27 @@ header{
 
 header nav{
     display: flex;
+    z-index: 5;
+}
+
+header nav .absolute{
+    position: absolute;
+    width: max-content;
+    top: 120%;
+    right: -100px;
+    background-color: var(--bg-color);
+    z-index: 999;
+    font: .9rem regular;
+    padding: 10px 20px;
+    display: none;
+    flex-direction: column;
+    row-gap: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.absolute.flex{
+    display: flex;
 }
 
 header nav ul{
@@ -44,6 +65,29 @@ header nav ul{
 
 nav ul li{
     list-style: none;
+}
+
+nav ul .log, nav ul .log form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    cursor: pointer;
+    color: var(--bg-color);
+}
+
+nav ul .log form button{
+    background-color: transparent;
+    color: var(--bg-color);
+    border: 0;
+    font: 1rem regular;
+    column-gap: 5px;
+}
+
+
+nav ul .log:hover{
+    scale: 1;
+    border: 0;
 }
 
 nav ul li:hover{
@@ -114,12 +158,14 @@ nav ul li:not(:last-child) a:hover{
     max-width: max-content;
     max-height: 24px;
     cursor: pointer;
+    position: relative;
 }
 
 .profile:hover{
     background-color: white;
     border-radius: 50px;
     padding: 0px;
+    scale: 1;
 }
 .profile.active{
     background-color: white;

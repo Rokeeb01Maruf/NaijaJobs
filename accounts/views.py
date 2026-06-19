@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from .models import User
 
 def signup(request):
+    nextUrl = request.GET.get("next")
     if request.method == "GET":
         return render(request, 'accounts/signup.html')
     elif request.method == "POST":
@@ -14,7 +15,7 @@ def signup(request):
         cpassword = request.POST.get("cpassword")
         terms = request.POST.get("terms")
         role = request.POST.get("role")
-        const = [first_name, last_name, username, email, password, cpassword, terms, role]
+        nextUrl = request.GET.get("next")
         if not first_name:
             error = "First name is required"
             return render(request, "accounts/signup.html", {"error": error})
@@ -47,12 +48,14 @@ def signup(request):
                 user.set_password(password)
                 user.save()
                 login(request, user)
-                return redirect("signin")
+                signin_url = f"/signin/?next={nextUrl}" if nextUrl else "signin"
+                return redirect(signin_url)
             except Exception as e:
                 error = "server error"
                 return render(request, "accounts/signup.html", {"error": str(e), "message": error})
 
 def signin(request):
+    nextUrl = request.GET.get("next")
     if request.method == "GET":
         return render(request, 'accounts/signin.html')
     elif request.method == "POST":
@@ -69,5 +72,5 @@ def signin(request):
             return render(request, "accounts/signin.html",{"error" : error})
         else:
             login(request, user)
-            return redirect("home")
+            return redirect(nextUrl or "home")
 # Create your views here.

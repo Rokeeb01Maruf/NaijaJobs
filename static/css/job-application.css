@@ -1,0 +1,162 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+#container{
+    display: flex;
+    column-gap: 20px;
+    padding: 10px 50px;
+}
+
+aside.first{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    flex: 20;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+aside.first h3{
+    font: 1.5rem regular;
+    font-weight: bold;    
+}
+
+div.profiles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5px;
+    background-color: white;
+    padding-bottom: 10px;
+    box-shadow: 1px 1px 4px grey;
+    border-radius: 5px;
+}
+
+div.profiles img{
+    width: 216.82px;
+    background-color: grey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+div.stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: white;
+    box-shadow: 1px 1px 4px grey;
+    font: .85rem regular;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+p.mail{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+b.brown, b.green, b.red, b.blue{
+    font-size: 1rem;
+}
+
+b.brown{
+    color: brown;
+}
+
+b.green{
+    color: var(--forest-green);
+}
+
+b.blue{
+    color: blue;
+}
+
+b.red{
+    color: red;
+}
+
+aside.second{
+    flex: 80;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+a.application-card{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    font: .85rem regular;
+    margin: 20px;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 4px grey;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    row-gap: 10px;
+}
+
+article.first{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+
+button.btn{
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.btn.grey{
+    background-color: lightgrey;
+    border: 1px solid grey;
+}
+
+.btn.green{
+    background-color: green;
+    color: white;
+}
+
+.btn.red{
+    background-color: red;
+    color: white;
+}
+
+article.second, div.location, div.time, div.type{
+    display: flex;
+    align-items: center;
+}
+
+article.second{
+    column-gap: 50px;
+}
+
+div.location, div.time, div.type{
+    column-gap: 2px;
+}
+
+section.left{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}

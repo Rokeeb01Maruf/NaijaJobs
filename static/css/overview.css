@@ -115,10 +115,18 @@
     flex-direction: column;
     margin: 10px 30px;
     row-gap: 10px;
-    background-color: rgba(211, 211, 211, 0.5);
+    background-color: rgba(211, 211, 211, 0.35);
     padding-block: 10px;
     border-radius: 10px;
     border: 0;
+}
+
+.job-cards:hover{
+    background-color: rgba(211, 211, 211, 0.5);
+}
+
+.job-cards.select{
+    background-color: rgba(211, 211, 211, 0.9);
 }
 
 .job-cards header, .job-cards footer, .job-cards main{
@@ -161,20 +169,19 @@
     padding-block: 10px;
 }
 
-.job-cards footer button{
+.job-cards footer a{
     padding: 5px 8px;
-    font-size: .7rem;
     border-radius: 5px;
-    cursor: pointer;
-    font-family: regular;
+    text-decoration: none;
+    font: .8rem regular;
 }
 
-.job-cards footer button:first-child{
+.job-cards footer a:first-child{
     background-color: white;
     border: 1px solid lightgrey;
 }
 
-.job-cards footer button:last-child{
+.job-cards footer a:last-child{
     background-color: blue;
     border: 0;
     color: white;
@@ -244,42 +251,43 @@
     border-top: 1px dashed lightgrey;
     padding-block: 10px;
     border-bottom: 1px solid lightgrey;
-    column-gap: 10px;
+    column-gap: 50px;
     justify-content: center;
     align-items: center;
 }
 
-.applicants-card footer button{
+.applicants-card footer a, .applicants-card footer button{
     padding: 7px 15px;
     font: .8rem regular;
     font-weight: bold;
     color: white;
     border: 0;
     border-radius: 5px;
+    text-decoration: none;
 }
 
-.applicants-card footer button:first-child{
-    background-color: var(--forest-green);
-}
-
-.applicants-card footer button:first-child:hover{
+button.accepted{
     background-color: green;
 }
 
-.applicants-card footer button:nth-child(2){
+button.rejected{
     background-color: red;
 }
 
-.applicants-card footer button:nth-child(2):hover{
+.applicants-card footer a:first-child{
+    background-color: var(--forest-green);
+}
+
+.applicants-card footer a:first-child:hover{
+    background-color: green;
+}
+
+.applicants-card footer a:nth-child(2){
+    background-color: red;
+}
+
+.applicants-card footer a:nth-child(2):hover{
     background-color: rgba(255, 0, 0, 0.8);
-}
-
-.applicants-card footer button:last-child{
-    background-color: blue;
-}
-
-.applicants-card footer button:last-child:hover{
-    background-color: lightblue;
 }
 
 .pro{
