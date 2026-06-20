@@ -30,25 +30,26 @@
 <section class="job-container">
     <aside>
         <h3>Jobs</h3>
-        <p>{{ job.id }}</p>
-        {% for job in jobs %}
-        <a href="{% url 'job_detail' job.id %}" class="job-card">
-            <div class="first">
-                <div>
-                    <h4>{{ job.title }}</h4>
-                    <p>{{ job.user.employer_profile.company_name }}</p>
+        <div class="jobs">
+            {% for job in jobs %}
+            <a href="{% url 'job_detail' job.id %}" class="job-card">
+                <div class="first">
+                    <div>
+                        <h4>{{ job.title }}</h4>
+                        <p>{{ job.user.employer_profile.company_name }}</p>
+                    </div>
+                    <form method="post" action="">
+                        <button type="button">Apply now</button>
+                    </form>
                 </div>
-                <form method="post" action="">
-                    <button type="button">Apply now</button>
-                </form>
-            </div>
-            <div class="second">
-                <p>{{ job.user.employer_profile.location }}.</p>
-                <p>{{ job.job_type }}.</p>
-                <p>{{ job.date_posted | naturaltime }}</p>
-            </div>
-        </a>
-        {% endfor %}
+                <div class="second">
+                    <p>{{ job.user.employer_profile.location }}.</p>
+                    <p>{{ job.job_type }}.</p>
+                    <p>{{ job.date_posted | naturaltime }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
     </aside>
     <aside>
         <h3>Featured companies</h3>

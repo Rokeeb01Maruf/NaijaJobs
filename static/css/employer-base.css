@@ -29,7 +29,12 @@ body{
     font: 1rem regular;
     max-height: 100vh;
     height: 100vh;
-    overflow-y: hidden;
+    overflow: hidden;
+}
+
+aside.hid{
+    max-height: 100vh;
+    overflow-y: scroll;
 }
 
 #section{

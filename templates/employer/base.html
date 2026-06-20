@@ -10,7 +10,7 @@
 </head>
 <body>
     <section id="section">
-        <aside>
+        <aside class="">
             <header>
                 <a href="{% url 'home' %}"><img src="{% static 'svg/logo-light.svg' %}" alt width="90"></a>
             </header>
@@ -44,7 +44,7 @@
                 </ul>
             </main>
         </aside>
-        <aside>
+        <aside class="hid">
             {% block content %} {% endblock %}
         </aside>
     </section>

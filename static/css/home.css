@@ -60,7 +60,6 @@
     align-items: start;
     background-color: var(--bg-color);
     margin-inline: 50px;
-    fill-opacity: .5;
 }
 
 .job-container aside:first-child{
@@ -68,7 +67,6 @@
 }
 
 .job-container aside:first-child a{
-    max-width: 33.333%;
     display: flex;
     flex-direction: column;
     row-gap: 5px;
@@ -77,13 +75,22 @@
     color: var(--text-color);
     margin-block: 10px;
     padding-block: 10px;
-    border-block: 1px solid grey;
+    background-color: white;
+    box-shadow: 1px 1px 4px grey;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .job-container aside:first-child a .first{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.jobs{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
 }
 
 .job-container aside:first-child a  div form button{
@@ -105,6 +112,7 @@
 
 .job-container aside:last-child{
     flex: 25;
+    margin-left: 20px;
 }
 
 
