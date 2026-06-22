@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import JsonResponse
 from .models import EmployerProfile, JobPost
 from django.contrib.auth.decorators import login_required
 from routes.models import Application
@@ -8,7 +7,10 @@ from accounts.models import User
 @login_required
 def employer_overview(request):
     user = request.user
-    company = user.employer_profile
+    try:
+        company = user.employer_profile
+    except:
+        company = None
     my_jobs = user.job_posts.all()
     applicants = Application.objects.filter(job__user = user).count()
     if user.role != "Employer":
