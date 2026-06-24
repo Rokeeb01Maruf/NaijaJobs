@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <title>{% block title %} Dashboard | Overview {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/employer-base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/employer-base.css' %}?v={{ static_version }}">
     {% block style %}{% endblock %}
 </head>
 <body>

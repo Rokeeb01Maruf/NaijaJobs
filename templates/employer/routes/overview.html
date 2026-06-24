@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %} Overview {% endblock %}
 {% block style %} 
-    <link rel="stylesheet" href="{% static 'css/overview.css' %}">
+    <link rel="stylesheet" href="{% static 'css/overview.css' %}?v={{ static_version }}">
 {% endblock %}
 {% block content %}
     <section id="container">

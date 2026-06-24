@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from .models import EmployerProfile, JobPost
 from django.contrib.auth.decorators import login_required
 from routes.models import Application
@@ -52,7 +52,10 @@ def employer_jobs(request):
     if user.role != "Employer":
         return redirect("home")
     if request.method == "GET":
-        company = user.employer_profile
+        try:
+            company = user.employer_profile
+        except:
+            company = None
         my_jobs = user.job_posts.all()
         return render(request, 'employer/routes/jobs.html', {
             "employer" : company,
@@ -89,9 +92,25 @@ def employer_applications(request):
     if request.user.role != "Employer":
         return redirect("home")
     employer = request.user
-    job = get_object_or_404(JobPost, user=employer)
-    applied_jobs = Application.objects.filter(job=job).all()
-    return render(request, 'employer/routes/applications.html', {"applications": applied_jobs})
+    try:
+        registered = employer.employer_profile
+        if registered:
+            company = True
+        else:
+            company = False
+    except:
+        company = False
+    try: 
+        applied_jobs = []
+        jobs = get_list_or_404(JobPost, user=employer)
+        for job in jobs:
+            applications = Application.objects.filter(job=job).all()
+            if applications: 
+                applied_jobs.append(applications)
+    except:
+        applied_jobs = None
+    return render(request, 'employer/routes/applications.html',
+                   {"applications": applied_jobs, "registered" : company})
 
 @login_required
 def employer_interviews(request):

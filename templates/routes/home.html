@@ -3,7 +3,7 @@
 {% load humanize %}
 {% block title %} NaijaJobs {% endblock %}
 {% block style %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v={{ static_version }}">
 {% endblock %}
 {% block content %}
 <section class="container">

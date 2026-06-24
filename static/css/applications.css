@@ -182,6 +182,14 @@ main{
     row-gap: 10px;
 }
 
+main.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    color: grey;
+}
+
 .pro{
     height: 100%;
     display: flex;

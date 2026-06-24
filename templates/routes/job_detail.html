@@ -2,7 +2,7 @@
 {% load humanize %}
 {% load static %}
 {% block title %}Job Detail{% endblock %}
-{% block style %} <link rel="stylesheet" href="{% static 'css/job_detail.css' %}"> {% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/job_detail.css' %}?v={{ static_version }}"> {% endblock %}
 {% block content %}
     <div class="container">
         <div class="absoluted">

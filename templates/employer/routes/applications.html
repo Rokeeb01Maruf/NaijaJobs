@@ -1,7 +1,7 @@
 {% extends "employer/base.html" %}
 {% load static %}
 {% block title %} Applications {% endblock %}
-{% block style %} <link rel="stylesheet" href="{% static 'css/applications.css' %}"> {% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/applications.css' %}?v={{ static_version }}"> {% endblock %}
 {% block content %}
 <div class="container">
     <header>
@@ -16,93 +16,59 @@
             </nav>
         </section>
     </header>
-    {% if applications %}
+    {% if registered %}
+        {% if applications %}
             <main>
-                {% for application in applications %}
-                <div class="applicants-card">
-                    <section>
-                        <div class="profile">
-                            <div class="image"><img src="{% static 'svg/user-black.svg' %}" alt=""></div>
-                            <div class="details">
-                                <h5>{{ application.applicant.first_name }} {{ application.applicant.last_name }}</h5>
-                                <p>{{ application.applicant.email }}</p>
-                                <p>{{ application.job.title }}</p>
-                                <p class="time">Applied on | <img width="16" src="{% static 'svg/time.svg' %}" alt="">{{ application.applied_at }}</p>
-                            </div>
-                        </div>
-                        {% if application.status != "pending" %}
-                            <div class="button">
-                                {% if application.status == "Accepted" %}
-                                    <button class="accepted">{{ application.status }}</button>
+                {% for applicant in applications %}
+                    {% for application in applicant %}
+                        <div class="applicants-card">
+                            <section>
+                                <div class="profile">
+                                    <div class="image"><img src="{% static 'svg/user-black.svg' %}" alt=""></div>
+                                    <div class="details">
+                                        <h5>{{ application.applicant.first_name }} {{ application.applicant.last_name }}</h5>
+                                        <p>{{ application.applicant.email }}</p>
+                                        <p>{{ application.job.title }}</p>
+                                        <p class="time">Applied on | <img width="16" src="{% static 'svg/time.svg' %}" alt="">{{ application.applied_at }}</p>
+                                    </div>
+                                </div>
+                                {% if application.status != "pending" %}
+                                    <div class="button">
+                                        {% if application.status == "Accepted" %}
+                                            <button class="accepted">{{ application.status }}</button>
+                                        {% else %}
+                                            <button class="rejected">{{ application.status }}</button>
+                                        {% endif %}
+                                    </div>
                                 {% else %}
-                                    <button class="rejected">{{ application.status }}</button>
+                                    <div class="button">
+                                        <a 
+                                        href="{% url 'alter application' application.job.id application.applicant.username %}?alter=accept"
+                                        >Accept</a>
+                                        <a 
+                                        href="{% url 'alter application' application.job.id application.applicant.username %}?alter=reject"
+                                        >Reject</a>
+                                    </div>
                                 {% endif %}
-                            </div>
-                        {% else %}
-                            <div class="button">
-                                <a 
-                                href="{% url 'alter application' application.job.id application.applicant.username %}?alter=accept"
-                                >Accept</a>
-                                <a 
-                                href="{% url 'alter application' application.job.id application.applicant.username %}?alter=reject"
-                                >Reject</a>
-                            </div>
-                        {% endif %}
-                    </section>
-                    <section>
-                        <a href="">View Resume</a>
-                        <p>Cover letter "Lorem ipsum dolor, sit amet consectetur adipisicing elit."</p>
-                    </section>
-                </div>
-                <!-- <div class="applicants-card">
-                    <section>
-                        <div class="profile">
-                            <div class="image"><img src="{% static 'svg/user-black.svg' %}" alt=""></div>
-                            <div class="details">
-                                <h5>Sarah Johnson</h5>
-                                <p>sarah.j@gmail.com</p>
-                                <p>5 years experience in marketing</p>
-                            </div>
+                            </section>
+                            <section>
+                                <a href="">View Resume</a>
+                                <p>Cover letter "Lorem ipsum dolor, sit amet consectetur adipisicing elit."</p>
+                            </section>
                         </div>
-                        <div class="button">
-                            <button>Accept</button>
-                            <button>Reject</button>
-                            <button>View Applications</button>
-                        </div>
-                    </section>
-                    <section>
-                        <a href="">View Resume</a>
-                        <p>Cover letter "Lorem ipsum dolor, sit amet consectetur adipisicing elit."</p>
-                    </section>
-                </div> -->
-                <!-- <div class="applicants-card">
-                    <section>
-                        <div class="profile">
-                            <div class="image"><img src="{% static 'svg/user-black.svg' %}" alt=""></div>
-                            <div class="details">
-                                <h5>Sarah Johnson</h5>
-                                <p>sarah.j@gmail.com</p>
-                                <p>5 years experience in marketing</p>
-                            </div>
-                        </div>
-                        <div class="button">
-                            <button>Accept</button>
-                            <button>Reject</button>
-                            <button>View Applications</button>
-                        </div>
-                    </section>
-                    <section>
-                        <a href="">View Resume</a>
-                        <p>Cover letter "Lorem ipsum dolor, sit amet consectetur adipisicing elit."</p>
-                    </section>
-                </div>
-            </main> -->
-            {% endfor %}
-    </div>
+                    {% endfor %}
+                {% endfor %}
+            </main>
         {% else %}
-            <div class="pro">
-                <p>Don't have a profile?</p>
-                <p>Click <a href="{% url 'employer profile' %}">Here</a> to go to and create company's pfrofile</p>
-            </div>
+            <main class="empty">
+                <p>Empty</p>
+            </main>
         {% endif %}
+    {% else %}
+    <div class="pro">
+        <p>Don't have a profile?</p>
+        <p>Click <a href="{% url 'employer profile' %}">Here</a> to go to and create company's pfrofile</p>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

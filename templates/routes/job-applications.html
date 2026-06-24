@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block style %} <link rel="stylesheet" href="{% static 'css/job-application.css'%}"> {% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/job-application.css'%}?v={{ static_version }}"> {% endblock %}
 {% block title %}My Applications{% endblock %}
 {% block content %}
     {% if applications %}

@@ -1,7 +1,7 @@
 {% extends "employer/base.html" %}
 {% load static %}
 {% block title %} Jobs {% endblock %}
-{% block style %} <link rel="stylesheet" href="{% static 'css/jobs.css' %}"> {% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/jobs.css' %}?v={{ static_version }}"> {% endblock %}
 {% block content %}
     {% if employer %}
         <div class="container">
