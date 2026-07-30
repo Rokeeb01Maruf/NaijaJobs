@@ -12,12 +12,13 @@ def Home(request):
 
 def JobDetail(request, job_id):
     id = job_id
-    applicant = request.user
     job = get_object_or_404(JobPost, id=id)
-    if Application.objects.filter(applicant=applicant, job=job).exists():
-        applied = True
-    else:
-        applied = False
+    applied = False
+    if request.user.is_authenticated:
+        if Application.objects.filter(applicant=request.user, job=job).exists():
+            applied = True
+        else:
+            applied = False
     job = get_object_or_404(
         JobPost,
         id=job_id,
