@@ -1,0 +1,118 @@
+@font-face {
+    font-family: head;
+    src: url('../fonts/playfair.ttf');
+}
+@font-face {
+    font-family: regular;
+    src: url('../fonts/dmsans.ttf');
+}
+
+:root{
+    --forest-green: #1A5C38;
+    --Nigerian-gold: #F5A623;
+    --bg-color: #FAFAF8;
+    --text-color: #1A1A1A;
+    --muted: #888888;
+}
+
+.container{
+    color: var(--text-color);
+    padding-block: 10px;
+    font-family: regular;
+}
+
+.category-box{
+    border-bottom: 1px solid var(--muted);
+    padding-bottom: 10px;
+    padding-inline: 50px;
+}
+
+.category-box, .category{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.category{
+    border-left: 1px solid var(--muted);
+    column-gap: 10px;
+    padding-left: 10px;
+    overflow-x: hidden;
+}
+
+.category button{
+    min-width: max-content;
+    padding: 5px 7px;
+    font-family: regular;
+    border: 0;
+}
+
+.category button:hover{
+    background-color: var(--Nigerian-gold);
+}
+
+.selected{
+    background-color: var(--Nigerian-gold);
+}
+
+.job-container{
+    display: flex;
+    align-items: start;
+    background-color: var(--bg-color);
+    margin-inline: 50px;
+}
+
+.job-container aside:first-child{
+    flex: 75;
+}
+
+.job-container aside:first-child a{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    text-decoration: none;
+    font: .89rem regular;
+    color: var(--text-color);
+    margin-block: 10px;
+    padding-block: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 4px grey;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.job-container aside:first-child a .first{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jobs{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+}
+
+.job-container aside:first-child a  div form button{
+    border: 0;
+    background-color: blue;
+    color: white;
+    padding: 10px 15px;
+    border: 0;
+    font: 1rem;
+    border-radius: 5px;
+}
+
+.job-container aside:first-child a .second{
+    display: flex;
+    font: .8rem regular;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.job-container aside:last-child{
+    flex: 25;
+    margin-left: 20px;
+}
+
+
