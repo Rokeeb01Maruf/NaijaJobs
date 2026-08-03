@@ -26,13 +26,9 @@ load_dotenv(BASE_DIR / ".env")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "false").strip().lower() == "true"
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv("ALLOWED_HOSTS", "127.0.0.1").split(",")
-    if host.strip()
-]
+ALLOWED_HOSTS = ["https://naijajobs-v2na.onrender.com/"]
 
 # Application definition
 
