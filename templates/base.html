@@ -9,6 +9,10 @@
     {% block style %} {% endblock %}
 </head>
 <body>
+    <div class="overlay">
+        <p>Pages are better viewed on a larger screen.</p>
+        <button>View anyway</button>
+    </div>
     <header>
         <div class="logo">
             <a href="{% url 'home' %}"><img src="{% static 'svg/logo-light.svg' %}" width="90" alt=""></a>
