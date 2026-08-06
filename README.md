@@ -1,5 +1,5 @@
-# Live demo   https://naijajobs-v2na.onrender.com
-# Demo video  https://1drv.ms/v/c/57E661DDBE3F6CBF/IQBtGGI6YrUsQonS2maNcGLQAZ3YZ1Pl6WuxeNueiqZ8yt8?e=xWeggh
+### Live demo   https://naijajobs-v2na.onrender.com
+### Demo video  https://1drv.ms/v/c/57E661DDBE3F6CBF/IQBtGGI6YrUsQonS2maNcGLQAZ3YZ1Pl6WuxeNueiqZ8yt8?e=xWeggh
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:22D3EE,100:3B82F6&height=200&section=header&text=NaijaJobs&fontSize=50&fontColor=fff&animation=twinkling"/>
